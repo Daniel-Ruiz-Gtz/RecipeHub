@@ -1,4 +1,5 @@
 import mysql from "serverless-mysql";
+import mysql2 from "mysql2";
 
 export const conn = mysql({
   config: {
@@ -8,4 +9,5 @@ export const conn = mysql({
     port: "3306",
     database: "recipehub",
   },
+  library: mysql2,
 });
