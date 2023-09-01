@@ -29,8 +29,35 @@ export async function GET(request, { params }) {
   }
 }
 
-export function DELETE() {
-  return NextResponse.json("Eliminando un Producto");
+export async function DELETE(request, { params }) {
+  try {
+    const result = await conn.query("DELETE FROM recipe WHERE id = ?", [
+      params.id,
+    ]);
+    console.log(result);
+    if (result.affectedRows == 0) {
+      return NextResponse.json(
+        {
+          message: "Receta no Encontrada",
+        },
+        {
+          status: 404,
+        }
+      );
+    }
+    return new Response(null, {
+      status: 204,
+    });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: error.message,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
 
 export function PUT() {
