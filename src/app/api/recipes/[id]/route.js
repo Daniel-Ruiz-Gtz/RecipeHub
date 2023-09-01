@@ -60,6 +60,37 @@ export async function DELETE(request, { params }) {
   }
 }
 
-export function PUT() {
-  return NextResponse.json("Actualizando un Producto");
+export async function PUT(request, { params }) {
+  try {
+    const data = await request.json();
+    const result = await conn.query("UPDATE recipe SET ? WHERE id = ?", [
+      data,
+      params.id,
+    ]);
+    console.log(result);
+    if (result.affectedRows == 0) {
+      return NextResponse.json(
+        {
+          message: "Receta no Encontrada",
+        },
+        {
+          status: 404,
+        }
+      );
+    }
+    const updatedRecipe = await conn.query(
+      "SELECT * FROM recipe WHERE id = ?",
+      [params.id]
+    );
+    return NextResponse.json(updatedRecipe[0]);
+  } catch (error) {
+    return NextResponse.json(
+      {
+        message: error.message,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
