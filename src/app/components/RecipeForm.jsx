@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 function RecipeForm() {
   const [recipe, setRecipe] = useState({
@@ -9,7 +10,9 @@ function RecipeForm() {
     steps: "",
     category: "",
   });
+
   const form = useRef(null);
+  const router = useRouter();
   const handleChange = (e) => {
     setRecipe({
       ...recipe,
@@ -20,6 +23,7 @@ function RecipeForm() {
     e.preventDefault();
     const res = await axios.post("/api/recipes", recipe);
     form.current.reset();
+    router.push("/home");
   };
   return (
     <form
@@ -35,6 +39,7 @@ function RecipeForm() {
         type="text"
         onChange={handleChange}
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
+        autoFocus
       />
 
       <label
