@@ -1,7 +1,7 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 function RecipeForm() {
   const [recipe, setRecipe] = useState({
@@ -13,18 +13,42 @@ function RecipeForm() {
 
   const form = useRef(null);
   const router = useRouter();
+  const params = useParams();
+
   const handleChange = (e) => {
     setRecipe({
       ...recipe,
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    if (params.id) {
+      axios.get("/api/recipes/" + params.id).then((res) => {
+        setRecipe({
+          name: res.data.name,
+          ingredient: res.data.ingredient,
+          steps: res.data.steps,
+          category: res.data.category,
+        });
+      });
+    }
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/api/recipes", recipe);
+    if (!params.id) {
+      const res = await axios.post("/api/recipes", recipe);
+      console.log(res);
+    } else {
+      const res = await axios.put("/api/recipes/" + params.id, recipe);
+      console.log(res);
+    }
     form.current.reset();
-    router.push("/home");
+    router.refresh();
+    router.push("/recipes");
   };
+
   return (
     <form
       className="bg-white shadow-md rounded-md px-8 pb-8"
@@ -38,6 +62,7 @@ function RecipeForm() {
         name="name"
         type="text"
         onChange={handleChange}
+        value={recipe.name}
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
         autoFocus
       />
@@ -52,6 +77,7 @@ function RecipeForm() {
         name="ingredient"
         rows={5}
         onChange={handleChange}
+        value={recipe.ingredient}
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
       />
 
@@ -62,6 +88,7 @@ function RecipeForm() {
         name="steps"
         rows={5}
         onChange={handleChange}
+        value={recipe.steps}
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
       />
 
@@ -74,6 +101,7 @@ function RecipeForm() {
       <select
         name="category"
         onChange={handleChange}
+        value={recipe.category}
         className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
         defaultValue="" // Establece la opción predeterminada
       >
@@ -87,7 +115,7 @@ function RecipeForm() {
       </select>
 
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Guardar Receta
+        {params.id ? "Actualizar Receta" : "Crear Receta"}
       </button>
     </form>
   );
