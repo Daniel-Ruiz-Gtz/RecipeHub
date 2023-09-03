@@ -34,7 +34,6 @@ export async function DELETE(request, { params }) {
     const result = await conn.query("DELETE FROM recipe WHERE id = ?", [
       params.id,
     ]);
-    console.log(result);
     if (result.affectedRows == 0) {
       return NextResponse.json(
         {
@@ -67,7 +66,6 @@ export async function PUT(request, { params }) {
       data,
       params.id,
     ]);
-    console.log(result);
     if (result.affectedRows == 0) {
       return NextResponse.json(
         {

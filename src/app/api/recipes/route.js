@@ -26,7 +26,6 @@ export async function POST(request) {
       steps,
       category,
     });
-    console.log(result);
     return NextResponse.json({
       name,
       ingredient,
