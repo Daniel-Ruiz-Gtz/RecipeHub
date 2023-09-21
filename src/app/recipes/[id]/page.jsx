@@ -13,18 +13,26 @@ async function RecipePage({ params }) {
   return (
     <div className="flex justify-center">
       <div className="flex justify-center items-center h-[calc(100vh-10rem)]">
-        <div className="p-6 bg-white">
+        <div className="p-6 dark:text- bg-white  dark:bg-slate-700 ">
           <Buttons recipeId={recipe.id} />
-          <h1 className="text-4xl font-bold">{recipe.name}</h1>
-          <p className="font-bold">Categoria:</p>
-          <p>{recipe.category}</p>
-          <p className="font-bold">Ingredientes:</p>
-          <p>{recipe.ingredient}</p>
-          <p className="font-bold">Pasos:</p>
-          <p>{recipe.steps}</p>
+          <h1 className="text-4xl font-bold text-black dark:text-white">
+            {recipe.name}
+          </h1>
+          <p className="font-bold text-black dark:text-white">Categoria:</p>
+          <p className="text-slate-600 dark:text-slate-300">
+            {recipe.category}
+          </p>
+          <p className="font-bold text-black dark:text-white">Ingredientes:</p>
+          <p className="text-slate-600 dark:text-slate-300">
+            {recipe.ingredient}
+          </p>
+          <p className="font-bold text-black dark:text-white">Pasos:</p>
+          <p className="text-slate-600 dark:text-slate-300">{recipe.steps}</p>
           <div className="align-bottom">
-            <p className="font-bold text-xs">Creado:</p>
-            <p className="text-xs">
+            <p className="font-bold text-xs text-black dark:text-white">
+              Creado:
+            </p>
+            <p className="text-xs text-slate-600 dark:text-slate-300">
               {new Date(recipe.createdAt).toLocaleDateString()}
             </p>
           </div>

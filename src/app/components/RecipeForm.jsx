@@ -69,11 +69,14 @@ function RecipeForm() {
 
   return (
     <form
-      className="bg-white shadow-md rounded-md px-8 pb-8"
+      className="bg-white dark:bg-slate-700 shadow-md rounded-md px-8 pb-8"
       onSubmit={handleSubmit}
       ref={form}
     >
-      <label htmlFor="name" className=" block text-gray-700 text-sm font-bold">
+      <label
+        htmlFor="name"
+        className=" block text-gray-700 dark:text-white text-sm font-bold"
+      >
         Nombre de la Receta:
       </label>
       <input
@@ -81,13 +84,13 @@ function RecipeForm() {
         type="text"
         onChange={handleChange}
         value={recipe.name}
-        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
+        className="dark:shadow-black dark:bg-slate-700 dark:text-white dark:border-black shadow appearance-none border rounded w-full py-2 px-3 mb-3"
         autoFocus
       />
 
       <label
         htmlFor="ingredient"
-        className="block text-gray-700 text-sm font-bold"
+        className="block text-gray-700 dark:text-white text-sm font-bold"
       >
         Ingredientes:
       </label>
@@ -96,10 +99,13 @@ function RecipeForm() {
         rows={5}
         onChange={handleChange}
         value={recipe.ingredient}
-        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
+        className="dark:shadow-black dark:bg-slate-700 dark:text-white dark:border-black shadow appearance-none border rounded w-full py-2 px-3 mb-3"
       />
 
-      <label htmlFor="steps" className="block text-gray-700 text-sm font-bold">
+      <label
+        htmlFor="steps"
+        className="block text-gray-700 dark:text-white text-sm font-bold"
+      >
         Pasos:
       </label>
       <textarea
@@ -107,12 +113,12 @@ function RecipeForm() {
         rows={5}
         onChange={handleChange}
         value={recipe.steps}
-        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
+        className="dark:shadow-black dark:bg-slate-700 dark:text-white dark:border-black shadow appearance-none border rounded w-full py-2 px-3 mb-3"
       />
 
       <label
         htmlFor="category"
-        className="block text-gray-700 text-sm font-bold"
+        className="block text-gray-700 dark:text-white text-sm font-bold"
       >
         Categoria:
       </label>
@@ -120,7 +126,7 @@ function RecipeForm() {
         name="category"
         onChange={handleChange}
         value={recipe.category}
-        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
+        className="dark:shadow-black dark:bg-slate-700 dark:text-white dark:border-black shadow appearance-none border rounded w-full py-2 px-3 mb-3"
         defaultValue="" // Establece la opción predeterminada
       >
         <option value="" disabled>
@@ -134,13 +140,13 @@ function RecipeForm() {
 
       <label
         htmlFor="recipeImage"
-        className="block text-gray-700 text-sm font-bold"
+        className="block text-gray-700 dark:text-white text-sm font-bold"
       >
         Imagen:
       </label>
       <input
         type="file"
-        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
+        className="dark:shadow-black dark:bg-slate-700 dark:text-white dark:border-black shadow appearance-none border rounded w-full py-2 px-3 mb-3"
         onChange={(e) => {
           setFile(e.target.files[0]);
         }}
