@@ -19,7 +19,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-slate-200 dark:bg-zinc-900 text-black dark:text-white py-3 mb-2">
+    <nav className="bg-slate-400 dark:bg-zinc-900 text-black dark:text-white py-3 mb-2">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="dark:text-white hover text-2xl">
           <h1>RecipeHub</h1>
