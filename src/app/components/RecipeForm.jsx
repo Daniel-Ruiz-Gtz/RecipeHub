@@ -11,6 +11,7 @@ function RecipeForm() {
     category: "",
   });
 
+  const [file, setFile] = useState(null);
   const form = useRef(null);
   const router = useRouter();
   const params = useParams();
@@ -37,11 +38,28 @@ function RecipeForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", recipe.name);
+    formData.append("ingredient", recipe.ingredient);
+    formData.append("steps", recipe.steps);
+    formData.append("category", recipe.category);
+
+    if (file) {
+      formData.append("image", file);
+    }
     if (!params.id) {
-      const res = await axios.post("/api/recipes", recipe);
+      const res = await axios.post("/api/recipes", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log(res);
     } else {
-      const res = await axios.put("/api/recipes/" + params.id, recipe);
+      const res = await axios.put("/api/recipes/" + params.id, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log(res);
     }
     form.current.reset();
@@ -113,6 +131,27 @@ function RecipeForm() {
         <option>Postre</option>
         <option>Bebida</option>
       </select>
+
+      <label
+        htmlFor="recipeImage"
+        className="block text-gray-700 text-sm font-bold"
+      >
+        Imagen:
+      </label>
+      <input
+        type="file"
+        className="shadow appearance-none border rounded w-full py-2 px-3 mb-3"
+        onChange={(e) => {
+          setFile(e.target.files[0]);
+        }}
+      />
+      {file && (
+        <img
+          className="w-96 object-contain mx-auto my-4"
+          src={URL.createObjectURL(file)}
+          alt=""
+        />
+      )}
 
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         {params.id ? "Actualizar Receta" : "Crear Receta"}
