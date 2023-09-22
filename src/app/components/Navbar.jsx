@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { HiEye } from "react-icons/hi";
@@ -21,7 +22,16 @@ function Navbar() {
   return (
     <nav className="bg-slate-400 dark:bg-zinc-900 text-black dark:text-white py-3 mb-2">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="dark:text-white hover text-2xl">
+        <Link
+          href="/"
+          className="dark:text-white hover text-2xl font-semibold whitespace-nowrap flex items-center"
+        >
+          <Image
+            src={"/RecipeHub.png"}
+            width={50}
+            height={50}
+            alt="RecipeHub"
+          />
           <h1>RecipeHub</h1>
         </Link>
         <ul>
