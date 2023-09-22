@@ -26,7 +26,12 @@ function Navbar() {
           href="/"
           className="dark:text-white hover text-2xl font-semibold whitespace-nowrap flex items-center"
         >
-          <Image src={"/RecipeHub.png"} width={50} height={50} />
+          <Image
+            src={"/RecipeHub.png"}
+            width={50}
+            height={50}
+            alt="RecipeHub"
+          />
           <h1>RecipeHub</h1>
         </Link>
         <ul>
