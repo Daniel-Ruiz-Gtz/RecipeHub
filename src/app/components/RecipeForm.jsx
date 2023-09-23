@@ -96,7 +96,7 @@ function RecipeForm() {
       </label>
       <textarea
         name="ingredient"
-        rows={5}
+        rows={10}
         onChange={handleChange}
         value={recipe.ingredient}
         className="dark:shadow-black dark:bg-slate-700 dark:text-white dark:border-black shadow appearance-none border rounded w-full py-2 px-3 mb-3"
@@ -110,7 +110,7 @@ function RecipeForm() {
       </label>
       <textarea
         name="steps"
-        rows={5}
+        rows={10}
         onChange={handleChange}
         value={recipe.steps}
         className="dark:shadow-black dark:bg-slate-700 dark:text-white dark:border-black shadow appearance-none border rounded w-full py-2 px-3 mb-3"
