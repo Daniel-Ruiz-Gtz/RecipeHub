@@ -12,7 +12,7 @@ function Buttons({ recipeId }) {
           router.push("/recipes/edit/" + recipeId);
         }}
       >
-        <HiPencil className="text-2xl text-black hover:text-gray-700" />
+        <HiPencil className="text-2xl text-black hover:text-gray-800" />
       </button>
       <button>
         <HiTrash
