@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="sticky bottom-0 p-2 w-full z-50 bg-slate-400 dark:bg-zinc-900 text-black dark:text-white">
+    <div className="bottom-0 left-0 right-0 p-2 z-50 bg-slate-400 dark:bg-zinc-900 text-black dark:text-white">
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-0">
         <div className="sm:flex sm:items-center sm:justify-between">
           <Link href="/" className="flex items-center mb-2 mx-4 sm:mb-0">

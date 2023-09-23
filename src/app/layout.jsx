@@ -15,8 +15,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <div className="h-[calc(100vh-5rem)] container mx-auto">{children}</div>
-        <Footer />
+        <div className="min-h-screen flex flex-col">
+          <main className="flex-grow">
+            <div className="container mx-auto my-5">{children}</div>
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
