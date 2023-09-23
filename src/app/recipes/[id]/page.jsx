@@ -11,34 +11,32 @@ async function loadRecipe(recipeId) {
 async function RecipePage({ params }) {
   const recipe = await loadRecipe(params.id);
   return (
-    <div className="flex justify-center">
-      <div className="flex justify-center items-center h-[calc(100vh-10rem)]">
-        <div className="p-6 dark:text- bg-white  dark:bg-slate-700 ">
-          <Buttons recipeId={recipe.id} />
-          <h1 className="text-4xl font-bold text-black dark:text-white">
-            {recipe.name}
-          </h1>
-          <p className="font-bold text-black dark:text-white">Categoria:</p>
-          <p className="text-slate-600 dark:text-slate-300">
-            {recipe.category}
+    <div className="justify-center items-center p-6 bg-white  dark:bg-slate-700">
+      <div className="mb-5">
+        <Buttons recipeId={recipe.id} />
+        <h1 className="text-4xl font-bold text-black dark:text-white">
+          {recipe.name}
+        </h1>
+        <p className="font-bold text-black dark:text-white">Categoria:</p>
+        <p className="text-slate-600 dark:text-slate-300">{recipe.category}</p>
+        <p className="font-bold text-black dark:text-white">Ingredientes:</p>
+        <p className="text-slate-600 dark:text-slate-300">
+          {recipe.ingredient}
+        </p>
+        <p className="font-bold text-black dark:text-white">Pasos:</p>
+        <p className="text-slate-600 dark:text-slate-300">{recipe.steps}</p>
+        <div className="align-bottom">
+          <p className="font-bold text-xs text-black dark:text-white">
+            Creado:
           </p>
-          <p className="font-bold text-black dark:text-white">Ingredientes:</p>
-          <p className="text-slate-600 dark:text-slate-300">
-            {recipe.ingredient}
+          <p className="text-xs text-slate-600 dark:text-slate-300">
+            {new Date(recipe.createdAt).toLocaleDateString()}
           </p>
-          <p className="font-bold text-black dark:text-white">Pasos:</p>
-          <p className="text-slate-600 dark:text-slate-300">{recipe.steps}</p>
-          <div className="align-bottom">
-            <p className="font-bold text-xs text-black dark:text-white">
-              Creado:
-            </p>
-            <p className="text-xs text-slate-600 dark:text-slate-300">
-              {new Date(recipe.createdAt).toLocaleDateString()}
-            </p>
-          </div>
         </div>
       </div>
-      <img src={recipe.image} className="w-1/3 h-1/3 justify-center" alt="" />
+      <div className="flex justify-center items-center">
+        <img src={recipe.image} className="w-2/3 h-2/3" alt="Receta" />
+      </div>
     </div>
   );
 }
