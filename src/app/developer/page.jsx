@@ -38,6 +38,7 @@ function DeveloperPage() {
               magia de la comida en nuestras vidas. ¡Bienvenidos a mi mundo
               gastronómico!
             </p>
+            <h2 className="font-bold text-2xl">Código Abierto</h2>
             <p>
               El código de esta Web App es de código abierto, por lo tanto si
               encuentras algún error o gustas implementar alguna funcionalidad
@@ -46,13 +47,14 @@ function DeveloperPage() {
               <a
                 href="https://github.com/Daniel-Ruiz-Gtz/RecipeHub"
                 className=" text-sky-600 hover:underline"
+                target="_blank"
               >
                 Github
               </a>
               .
             </p>
           </div>
-          <div>
+          <div className="relative">
             <Image
               src={"/Profile.jpg"}
               width={500}
@@ -64,7 +66,7 @@ function DeveloperPage() {
         </div>
         <h2 className="font-bold text-2xl mb-3">Conecta Conmigo</h2>
         <div>
-          <Link href="https://github.com/Daniel-Ruiz-Gtz">
+          <Link href="https://github.com/Daniel-Ruiz-Gtz" target="_blank">
             <div className="flex items-center py-2 pl-3">
               <Image
                 src={"/icon_github.png"}
@@ -75,7 +77,10 @@ function DeveloperPage() {
               <span className="px-5">Github</span>
             </div>
           </Link>
-          <Link href="https://www.linkedin.com/in/danielruizgtz/">
+          <Link
+            href="https://www.linkedin.com/in/danielruizgtz/"
+            target="_blank"
+          >
             <div className="flex items-center py-2 pl-3">
               <Image
                 src={"/icon_linkedin.png"}
@@ -86,7 +91,7 @@ function DeveloperPage() {
               <span className="px-5">Linkedin</span>
             </div>
           </Link>
-          <Link href="https://twitter.com/Daniel_Ruiz_Gtz">
+          <Link href="https://twitter.com/Daniel_Ruiz_Gtz" target="_blank">
             <div className="flex items-center py-2 pl-3">
               <Image
                 src={"/icon_twitter.png"}
