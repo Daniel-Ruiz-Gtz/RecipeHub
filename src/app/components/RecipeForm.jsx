@@ -6,8 +6,8 @@ import { useRouter, useParams } from "next/navigation";
 function RecipeForm() {
   const [recipe, setRecipe] = useState({
     name: "",
-    ingredient: "",
-    steps: "",
+    ingredient: Array.from({ length: 10 }, (_, i) => `${i + 1}.`).join("\n"),
+    steps: Array.from({ length: 10 }, (_, i) => `${i + 1}.`).join("\n"),
     category: "",
   });
 

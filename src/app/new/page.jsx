@@ -2,7 +2,7 @@ import RecipeForm from "../components/RecipeForm";
 
 function NewPage() {
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="justify-center items-center h-full">
       <RecipeForm />
     </div>
   );
