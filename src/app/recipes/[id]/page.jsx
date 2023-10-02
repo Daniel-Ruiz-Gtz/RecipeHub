@@ -1,5 +1,6 @@
 import axios from "axios";
 import Buttons from "./Buttons";
+import React from "react";
 
 async function loadRecipe(recipeId) {
   const { data } = await axios.get(
@@ -21,10 +22,22 @@ async function RecipePage({ params }) {
         <p className="text-slate-600 dark:text-slate-300">{recipe.category}</p>
         <p className="font-bold text-black dark:text-white">Ingredientes:</p>
         <p className="text-slate-600 dark:text-slate-300">
-          {recipe.ingredient}
+          {recipe.ingredient.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              <br />
+            </React.Fragment>
+          ))}
         </p>
         <p className="font-bold text-black dark:text-white">Pasos:</p>
-        <p className="text-slate-600 dark:text-slate-300">{recipe.steps}</p>
+        <p className="text-slate-600 dark:text-slate-300">
+          {recipe.steps.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              <br />
+            </React.Fragment>
+          ))}
+        </p>
         <div className="align-bottom">
           <p className="font-bold text-xs text-black dark:text-white">
             Creado:
