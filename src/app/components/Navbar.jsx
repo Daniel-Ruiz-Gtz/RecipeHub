@@ -39,7 +39,8 @@ function Navbar() {
         </Link>
         <ul>
           <div className="flex justify-center items-center">
-            {session?.user && session.user.email == "danieldelat4@gmail.com" ? (
+            {session?.user &&
+            session.user.email == process.env.NEXT_PUBLIC_MAIN_USER ? (
               <div className="flex justify-center items-center">
                 <li className="mx-5 text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-300">
                   <Link href="/new" className="">
